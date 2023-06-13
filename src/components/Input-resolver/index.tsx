@@ -1,5 +1,3 @@
-import { error } from "console";
-import { type } from "os";
 import { useForm, Resolver } from "react-hook-form";
 
 type FormValues = {
@@ -7,7 +5,7 @@ type FormValues = {
   lastName: string;
 };
 
-const Input = () => {
+const InputResolver = () => {
   const resolver: Resolver<FormValues> = async (values) => {
     return {
       values: values.firstName ? values : {},
@@ -32,14 +30,14 @@ const Input = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <input {...register("firstName")} placeholder="first name" />      
+      <input {...register("firstName")} placeholder="first name" />
       {errors?.firstName && <p>{errors.firstName.message}</p>}
 
       <input {...register("lastName")} placeholder="last name" />
 
-      <input type="submit"/>
+      <input type="submit" />
     </form>
   );
 };
 
-export default Input;
+export default InputResolver;
